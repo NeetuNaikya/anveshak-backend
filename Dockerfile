@@ -1,19 +1,21 @@
-FROM python:3.9-slim
+FROM python:3.10-slim
 
-# Set the working directory
+# Install system dependencies
+RUN apt-get update && apt-get install -y build-essential gcc
+
+# Set work directory
 WORKDIR /app
 
-# Copy the requirements file
+# Copy requirements and install
 COPY requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy the rest of your code
+COPY . .
 
-# Copy the entire backend source code
-COPY src/ ./src/
+# Expose port (change if your app uses a different port)
+EXPOSE 8000
 
-# Expose the port the app runs on
-EXPOSE 5000
-
-# Command to run the application
+# Start the app (change if your main file or command is different)
 CMD ["python", "src/app.py"]
