@@ -14,3 +14,5 @@ openai==0.27.0
 geopandas==0.9.0
 whisper==1.0.0
 tailwindcss==2.2.19
+spacy==3.7.2
+blis==0.7.11
