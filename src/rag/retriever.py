@@ -14,3 +14,8 @@ class Retriever:
     def add_embeddings(self, new_embeddings: List[np.ndarray]):
         self.embeddings.extend(new_embeddings)
         self.index.add(np.array(new_embeddings).astype('float32'))
+
+# ✅ This makes your app.py work
+def retrieve_response(query_embedding: np.ndarray, index: faiss.IndexFlatL2, embeddings: List[np.ndarray], k: int = 5) -> List[int]:
+    retriever = Retriever(index, embeddings)
+    return retriever.retrieve(query_embedding, k)
