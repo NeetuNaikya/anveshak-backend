@@ -20,7 +20,9 @@ def parse_xlsx(file_path):
     df = pd.read_excel(file_path)
     return df.to_string()
 
-def parse_document(file_path):
+def parse_documents(file_path):
+    return parse_document(file_path)
+
     import os
     _, file_extension = os.path.splitext(file_path)
     if file_extension == ".pdf":
