@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-def crawl_web_content(urls):
+def crawl_content(urls):
+
     """
     Crawl the given URLs and extract relevant content.
     
